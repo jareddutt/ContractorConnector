@@ -60,3 +60,15 @@ SELECT
     'Credit Card',
     450.00,
     '2024-10-04';
+
+INSERT INTO Invoice (ProjectID, TotalPrice)
+SELECT
+    (SELECT ProjectID FROM Project WHERE Description = 'Build outdoor patio deck.'),
+    1000.00;
+
+INSERT INTO Payment (ProjectID, Type, Amount, PaymentDate)
+SELECT
+    (SELECT ProjectID FROM Project WHERE Description = 'Build outdoor patio deck.'),
+    'Cash',
+    50.00,
+    '2024-10-06';
